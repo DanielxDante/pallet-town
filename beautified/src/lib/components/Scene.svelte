@@ -1,27 +1,27 @@
 <script>
-  import { T, useTask } from '@threlte/core';
-  import { interactivity } from '@threlte/extras'
-  import { spring } from 'svelte/motion';
-  import { writable } from 'svelte/store';
+    import { T, useTask } from '@threlte/core';
+	import { interactivity } from '@threlte/extras'
+	import { spring } from 'svelte/motion';
+	import { writable } from 'svelte/store';
 
-  interactivity();
-  const scale = spring(1);
-  let rotation = 0;
-  const liquidWave = writable(0);
+	interactivity();
+	const scale = spring(1);
+	let rotation = 0;
+	const liquidWave = writable(0);
 
-  useTask((delta) => {
-    rotation += delta
-    liquidWave.update((wave) => Math.sin(rotation) + delta);
-  })
+	useTask((delta) => {
+		rotation += delta
+		liquidWave.update((wave) => Math.sin(rotation) + delta);
+	})
 </script>
 
 <!-- Camera -->
 <T.PerspectiveCamera
-  makeDefault
-  position={[5, 5, 5]}
-  oncreate={(ref) => {
-    ref.lookAt(0, 1, 0);
-  }}
+	makeDefault
+	position={[5, 5, 5]}
+	oncreate={(ref) => {
+		ref.lookAt(0, 1, 0);
+	}}
 />
 
 <!-- Lights -->
@@ -30,22 +30,22 @@
 
 <!-- Coffee Cup -->
 <T.Mesh
-  rotation.y={rotation}
-  position.y={1}
-  scale={$scale}
-  onpointerenter={() => scale.set(1.2)}
-  onpointerleave={() => scale.set(1)}
-  castShadow
+	rotation.y={rotation}
+	position.y={1}
+	scale={$scale}
+	onpointerenter={() => scale.set(1.2)}
+	onpointerleave={() => scale.set(1)}
+	castShadow
 >
-  <!-- Cup Body -->
-  <T.CylinderGeometry args={[1, 1, 2, 32]} />
-  <T.MeshStandardMaterial color="white" />
+	<!-- Cup Body -->
+	<T.CylinderGeometry args={[1, 1, 2, 32]} />
+	<T.MeshStandardMaterial color="white" />
 
-  <!-- Cup Handle -->
-  <T.Mesh position={[1.5, 0.2, 0]}>
-    <T.TorusGeometry args={[0.5, 0.1, 16, 100]} />
-    <T.MeshStandardMaterial color="white" />
-  </T.Mesh>
+	<!-- Cup Handle -->
+	<T.Mesh position={[1.5, 0.2, 0]}>
+		<T.TorusGeometry args={[0.5, 0.1, 16, 100]} />
+		<T.MeshStandardMaterial color="white" />
+	</T.Mesh>
 
   <!-- Coffee -->
   <!-- <T.Mesh position={[0, -0.5, 0]}>

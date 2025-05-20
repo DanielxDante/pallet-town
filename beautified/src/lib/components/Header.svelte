@@ -13,7 +13,7 @@
 		window.addEventListener('hashchange', updateHash);
 
 		return () => {
-		window.removeEventListener('hashchange', updateHash);
+			window.removeEventListener('hashchange', updateHash);
 		};
 	});
 </script>
@@ -38,8 +38,16 @@
 						<a 
 							href={section.route}
 							aria-current={currentHash === section.route ? 'page' : undefined}
-							class="flex h-full items-center py-0 px-2 text-white text-sm font-bold tracking-wider lowercase transition-colors duration-200 ease-linear hover:underline aria-[current=page]:text-cyan-300"
+							class="flex h-full items-center py-0 px-2 text-white text-sm font-bold tracking-wider lowercase transition-colors duration-200 ease-linear hover:text-[var(--color-theme-3)]"
 							style="font-family: 'Neue Montreal'"
+							onclick={(e) => {
+								e.preventDefault();
+								const targetId = section.route.substring(1);
+								const targetElement = document.getElementById(targetId);
+								if (targetElement) {
+									targetElement.scrollIntoView({ behavior: 'smooth' });
+								}
+							}}
 						>
 							{section.title}
 						</a>
