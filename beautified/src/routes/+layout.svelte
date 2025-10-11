@@ -36,7 +36,7 @@
 	];
 
 	let showIntro = $state(true);
-	const INTRO_DURATION = 3000;
+	const INTRO_DURATION = 2000;
 
 	onMount(() => {
 		const introPlayed = sessionStorage.getItem('introPlayed');
