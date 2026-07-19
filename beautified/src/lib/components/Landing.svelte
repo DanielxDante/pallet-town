@@ -106,7 +106,7 @@
 		</Canvas>
 	</div>
 
-	<span class="w-full text-base sm:text-xl text-center tracking-tight bg-zinc-600 rounded-md p-3" style="font-family: 'Neue Montreal'">
+	<span class="w-full text-base sm:text-xl text-center tracking-tight bg-surface text-fg rounded-md p-3" style="font-family: 'Neue Montreal'">
 		{m.landing_intro()}
 	</span>
 </section>
