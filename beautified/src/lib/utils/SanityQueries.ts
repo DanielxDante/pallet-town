@@ -15,8 +15,8 @@ const client = createClient({
 });
 
 // GROQ Queries
-const GET_ALL_EXPERIENCES = `
-    *[_type == "experience"]{
+const GET_EXPERIENCES_BY_LANG = `
+    *[_type == "experience" && language == $lang] | order(startDate desc) {
         _id,
         title,
         company,
@@ -24,16 +24,22 @@ const GET_ALL_EXPERIENCES = `
         startDate,
         endDate,
         description,
+        language,
     }
 `;
 
+const DEFAULT_LANG = 'en';
+
 /**
- * Get all experiences
- * @returns {Promise<object|null>}
+ * Get all experiences for a given locale.
+ * Falls back to the default language ("en") when no localized documents exist.
  */
-export async function getExperiences() {
+export async function getExperiences(lang: string = DEFAULT_LANG) {
     try {
-        const experiences = await client.fetch(GET_ALL_EXPERIENCES);
+        const experiences = await client.fetch(GET_EXPERIENCES_BY_LANG, { lang });
+        if ((!experiences || experiences.length === 0) && lang !== DEFAULT_LANG) {
+            return await client.fetch(GET_EXPERIENCES_BY_LANG, { lang: DEFAULT_LANG });
+        }
         return experiences;
     } catch (error) {
         console.error('Error fetching experiences:', error);

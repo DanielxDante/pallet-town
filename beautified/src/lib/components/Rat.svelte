@@ -1,5 +1,5 @@
 <script>
-    import { onMount, onDestroy } from 'svelte';
+    import { onMount } from 'svelte';
 
     let m = $state({ x: 0, y: 0 });
     let visible = $state(false); // Start hidden until first mouse move

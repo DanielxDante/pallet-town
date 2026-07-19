@@ -2,3 +2,9 @@
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+node_modules
+
+# Build artifacts
+.svelte-kit
+sanity/.sanity
+sanity/dist

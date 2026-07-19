@@ -6,6 +6,12 @@ export const experience = defineType({
     type: 'document',
     fields: [
         defineField({
+            name: 'language',
+            type: 'string',
+            readOnly: true,
+            hidden: true,
+        }),
+        defineField({
             name: 'title',
             type: 'string',
             validation: (rule) => rule.required(),
@@ -33,10 +39,10 @@ export const experience = defineType({
             name: 'endDate',
             title: 'End Date',
             type: 'date',
+            description: 'Leave blank if this is your current role (will display as "Present").',
             options: {
                 dateFormat: 'YYYY-MM'
             },
-            validation: (rule) => rule.required(),
         }),
         defineField({
             name: 'description',

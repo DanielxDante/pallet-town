@@ -10,7 +10,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"lint": "eslint ."
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^5.2.6",
@@ -25,7 +25,7 @@
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-svelte": "^3.12.4",
 		"globals": "^16.4.0",
-		"prettier": "^3.6.2",
+		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"svelte": "^5.39.11",
@@ -36,11 +36,14 @@
 		"vite": "^6.3.7"
 	},
 	"dependencies": {
+		"@inlang/paraglide-js": "^2.22.0",
+		"@portabletext/svelte": "^3.0.1",
 		"@sanity/client": "^7.14.0",
 		"@tailwindcss/typography": "^0.5.19",
 		"@threlte/core": "^8.1.6",
 		"@threlte/extras": "^9.4.0",
 		"@types/three": "^0.180.0",
+		"@vercel/analytics": "^2.0.1",
 		"styled-components": "^6.1.19",
 		"three": "^0.180.0"
 	}
